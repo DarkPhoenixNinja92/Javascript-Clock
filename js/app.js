@@ -1,0 +1,12 @@
+const clock = document.querySelector(".clock");
+const hour = document.querySelector(".hour");
+const minute = document.querySelector(".minute");
+const second = document.querySelector(".second");
+let currentDate = new Date();
+let time = currentDate.getTime();
+let currentHour = currentDate.getHours();
+let currentMinute = currentDate.getMinutes();
+let currentSecond = currentDate.getSeconds();
+hour.textContent = currentHour;
+minute.textContent = currentMinute;
+second.textContent = currentSecond;
