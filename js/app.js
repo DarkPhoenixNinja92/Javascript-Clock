@@ -7,6 +7,20 @@ let time = currentDate.getTime();
 let currentHour = currentDate.getHours();
 let currentMinute = currentDate.getMinutes();
 let currentSecond = currentDate.getSeconds();
-hour.textContent = currentHour;
-minute.textContent = currentMinute;
-second.textContent = currentSecond;
+hour.innerHTML = currentHour;
+minute.innerHTML = currentMinute;
+second.innerHTML = currentSecond;
+
+function modeSwap() {
+    if (currentHour > 12) {
+        currentHour -= 12;
+        hour.innerHTML = currentHour;
+    }
+}
+
+function reverseSwap() {
+    if (currentHour <= 12) {
+        currentHour += 12;
+        hour.innerHTML = currentHour;
+    }
+}
