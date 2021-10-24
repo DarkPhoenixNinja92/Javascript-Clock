@@ -19,7 +19,7 @@ function modeSwap() {
 }
 
 function reverseSwap() {
-    if (currentHour <= 12) {
+    if (currentHour < 12) {
         currentHour += 12;
         hour.innerHTML = currentHour;
     }
