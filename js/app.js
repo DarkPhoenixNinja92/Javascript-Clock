@@ -1,26 +1,21 @@
-const clock = document.querySelector(".clock");
-const hour = document.querySelector(".hour");
-const minute = document.querySelector(".minute");
-const second = document.querySelector(".second");
-let currentDate = new Date();
-let time = currentDate.getTime();
-let currentHour = currentDate.getHours();
-let currentMinute = currentDate.getMinutes();
-let currentSecond = currentDate.getSeconds();
-hour.innerHTML = currentHour;
-minute.innerHTML = currentMinute;
-second.innerHTML = currentSecond;
+setInterval(setClock, 1000);
 
-function modeSwap() {
-    if (currentHour > 12) {
-        currentHour -= 12;
-        hour.innerHTML = currentHour;
-    }
+const hourHand = document.querySelector("[data-hour-hand]");
+const minuteHand = document.querySelector("[data-minute-hand]");
+const secondHand = document.querySelector("[data-second-hand]");
+
+function setClock() {
+    const currentDate = new Date();
+    const secondsRatio = currentDate.getSeconds() / 60;
+    const minutesRatio = (secondsRatio + currentDate.getMinutes()) / 60;
+    const hoursRatio = (minutesRatio + currentDate.getHours()) / 12;
+    setRotation(secondHand, secondsRatio);
+    setRotation(minuteHand, minutesRatio);
+    setRotation(hourHand, hoursRatio);
 }
 
-function reverseSwap() {
-    if (currentHour < 12) {
-        currentHour += 12;
-        hour.innerHTML = currentHour;
-    }
+function setRotation(element, rotationRatio) {
+    element.style.setProperty("--rotation", rotationRatio * 360)
 }
+
+setClock();
